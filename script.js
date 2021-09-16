@@ -1,4 +1,7 @@
+
+
 function startTimer(duration) {
+// timer = duration
     let timer = duration, minutes, seconds;
     setInterval(function () {
         minutes = parseInt(timer / 60, 10);
@@ -16,7 +19,13 @@ function startTimer(duration) {
 }
 
 window.onload = function () {
-    let time = 30,
-    display = document.getElementById('display');
-    startTimer(time, display);
+	
+
+    document.getElementById("mybutton").onclick = function() {
+		var time = document.getElementById("durationTimer").value;
+		display = document.getElementById("display");
+		startTimer(parseInt(time, 10), display);
+
+	}
+
 }
