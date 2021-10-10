@@ -1,20 +1,27 @@
 
 
-function startTimer(duration) {
+function startTimer(minutes, seconds, hours) {
 // timer = duration
-    let timer = duration, minutes, seconds;
+
     setInterval(function () {
-        minutes = parseInt(timer / 60, 10);
-        seconds = parseInt(timer % 60, 10);
+		
+ 
 
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
+        display.textContent = hours + ":"+ minutes + ":" + seconds;
 
-        display.textContent = minutes + ":" + seconds;
-
-        if (--timer < 0) {
-            timer = 0;
-        }
+		
+		if (--seconds<0) {
+			--minutes;
+			seconds=59;
+		}
+		
+		else if (--seconds<0 && --minutes<0) {
+			--hours;
+			seconds =59;
+			minutes=59;
+		}
+		
+		
     }, 1000);
 }
 
@@ -22,9 +29,11 @@ window.onload = function () {
 	
 
     document.getElementById("mybutton").onclick = function() {
-		var time = document.getElementById("durationTimer").value;
+		var dur_hours = document.getElementById("hoursTimer").value;
+		var dur_minutes = document.getElementById("minutesTimer").value;
+		var dur_seconds = document.getElementById("secondsTimer").value;
 		display = document.getElementById("display");
-		startTimer(parseInt(time, 10), display);
+		startTimer(parseInt(dur_minutes, 10), parseInt(dur_seconds, 10), parseInt(dur_hours, 10), display);
 
 	}
 
