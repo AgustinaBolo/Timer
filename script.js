@@ -4,11 +4,12 @@ function startTimer(minutes, seconds, hours) {
 // timer = duration
 
     setInterval(function () {
+	
+		hours = parseInt(hours, 10) < 10 ? "0" + parseInt(hours, 10) : parseInt(hours, 10);
+		minutes = parseInt(minutes, 10) < 10 ? "0" + parseInt(minutes, 10) : parseInt(minutes, 10);
+        seconds = parseInt(seconds, 10) < 10 ? "0" + parseInt(seconds, 10) : parseInt(seconds, 10);
 		
- 
-
         display.textContent = hours + ":"+ minutes + ":" + seconds;
-
 		
 		if (--seconds<0) {
 			--minutes;
@@ -21,6 +22,7 @@ function startTimer(minutes, seconds, hours) {
 			minutes=59;
 		}
 		
+	
 		
     }, 1000);
 }
