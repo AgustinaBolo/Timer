@@ -4,11 +4,30 @@ function startTimer(minutes, seconds, hours) {
 // timer = duration
 
    var CountSeconds = setInterval(function () {
-	
+   
+   
+   		if ( isNaN(hours) ) 
+	  	{
+	  		hours=0;
+	  	}
+  	
+  		if ( isNaN(minutes) ) 
+	  	{
+	  		minutes=0;
+	  	}
+	  	
+	  	if ( isNaN(seconds) ) 
+	  	{
+	  		seconds=0;
+	  	}
+  	
+   	
 		hours = parseInt(hours, 10) < 10 ? "0" + parseInt(hours, 10) : parseInt(hours, 10);
 		minutes = parseInt(minutes, 10) < 10 ? "0" + parseInt(minutes, 10) : parseInt(minutes, 10);
         seconds = parseInt(seconds, 10) < 10 ? "0" + parseInt(seconds, 10) : parseInt(seconds, 10);
 		
+   		
+        
         display.textContent = hours + ":"+ minutes + ":" + seconds;
 		
 	--seconds;
