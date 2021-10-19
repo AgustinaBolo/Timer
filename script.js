@@ -3,7 +3,7 @@
 function startTimer(minutes, seconds, hours) {
 // timer = duration
 
-    setInterval(function () {
+   var CountSeconds = setInterval(function () {
 	
 		hours = parseInt(hours, 10) < 10 ? "0" + parseInt(hours, 10) : parseInt(hours, 10);
 		minutes = parseInt(minutes, 10) < 10 ? "0" + parseInt(minutes, 10) : parseInt(minutes, 10);
@@ -11,17 +11,27 @@ function startTimer(minutes, seconds, hours) {
 		
         display.textContent = hours + ":"+ minutes + ":" + seconds;
 		
-		if (--seconds<0) {
-			--minutes;
-			seconds=59;
-		}
-		
-		else if (--seconds<0 && --minutes<0) {
-			--hours;
-			seconds =59;
-			minutes=59;
-		}
-		
+	--seconds;
+	
+	if (seconds<0 && minutes == 0 && hours==0) {
+		var audio = new Audio('https://www.fesliyanstudios.com/play-mp3/4383');
+		audio.play();
+		clearInterval(CountSeconds);
+	}
+	
+	else if (seconds<0 && minutes == 0) {
+		--hours;
+		minutes = 59;
+		seconds = 59;
+	}
+	
+	else if (seconds<0)
+	{
+		--minutes;
+		seconds = 59;
+	
+	}
+	
 	
 		
     }, 1000);
